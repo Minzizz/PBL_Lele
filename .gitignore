@@ -19,8 +19,12 @@
 /storage/*.key
 /storage/pail
 /vendor
-_ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
-PraktikumPWL - Copy/
+/public/build
+/public/js
+/public/css
+/node_modules
+/vendor
+.env
