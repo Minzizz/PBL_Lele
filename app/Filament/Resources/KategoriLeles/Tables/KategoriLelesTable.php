@@ -16,7 +16,7 @@ class KategoriLelesTable
         return $table
             ->columns([
                 TextColumn::make('nama_kategori'),
-                TextColumn::make('ukuran_minimum')->label('Gram'),
+                TextColumn::make('ukuran_minimum')->label('Standard panen'),
                 ImageColumn::make('gambar')
                 ->disk('public')
             ])
@@ -25,6 +25,7 @@ class KategoriLelesTable
             ])
             ->recordActions([
                 EditAction::make(),
+                \Filament\Actions\DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

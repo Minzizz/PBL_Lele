@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Kolams\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 
@@ -15,7 +16,11 @@ class KolamsTable
         return $table
             ->columns([
                 TextColumn::make('nama_kolam')->label('Nama Kolam'),
-                TextColumn::make('lokasi'),
+                TextColumn::make('lokasi')
+                    ->label('Lokasi')
+                    ->url(fn ($record) => $record->lokasi)
+                    ->openUrlInNewTab()
+                    ->icon('heroicon-o-map'),
                 TextColumn::make('kapasitas'),
             ])
             ->filters([
@@ -23,6 +28,7 @@ class KolamsTable
             ])
             ->recordActions([
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
