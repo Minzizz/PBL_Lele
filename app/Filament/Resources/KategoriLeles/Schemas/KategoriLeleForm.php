@@ -41,8 +41,7 @@ class KategoriLeleForm
                 ->icon(Heroicon::OutlinedScale),
 
             ImageColumn::make('gambar')
-                ->label('Gambar')
-                ->icon(Heroicon::OutlinedPhoto),
+                ->label('Gambar'),
             ]);
     }
 }

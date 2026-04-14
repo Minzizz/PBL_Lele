@@ -18,7 +18,9 @@ class KategoriLeleResource extends Resource
 {
     protected static ?string $model = KategoriLele::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string | \UnitEnum | null $navigationGroup = 'Menu Petugas';
+
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-cube';
 
     protected static ?string $recordTitleAttribute = 'kategori_lele';
 
@@ -49,11 +51,11 @@ class KategoriLeleResource extends Resource
     }
     public static function canViewAny(): bool
     {
-        return auth()->user()?->hasAnyRole(['admin', 'petugas lapangan']);
+        return auth()->user()?->hasAnyRole(['petugas lapangan']);
     }
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()?->hasAnyRole(['admin', 'petugas lapangan']);
+        return auth()->user()?->hasAnyRole(['petugas lapangan']);
     }
 }

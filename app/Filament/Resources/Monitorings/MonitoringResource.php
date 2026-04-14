@@ -20,7 +20,9 @@ class MonitoringResource extends Resource
 {
     protected static ?string $model = Monitoring::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string | \UnitEnum | null $navigationGroup = 'Menu Petugas';
+
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-eye';
 
     protected static ?string $recordTitleAttribute = 'Monitoring';
 
@@ -55,4 +57,14 @@ class MonitoringResource extends Resource
             'edit' => EditMonitoring::route('/{record}/edit'),
         ];
     }
+    public static function canViewAny(): bool
+        {
+            return auth()->user()?->hasAnyRole(['petugas lapangan']);
+        }
+
+        public static function shouldRegisterNavigation(): bool
+        {
+            return auth()->user()?->hasAnyRole(['petugas lapangan']);
+    }
 }
+

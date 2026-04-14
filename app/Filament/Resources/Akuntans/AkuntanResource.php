@@ -24,7 +24,9 @@ class AkuntanResource extends Resource
 {
     protected static ?string $model = Pengeluaran::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string | \UnitEnum | null $navigationGroup = 'Menu Akuntan';
+
+    protected static string | \BackedEnum | null $navigationIcon = Heroicon::OutlinedShoppingCart;
 
     protected static ?string $recordTitleAttribute = 'Akuntan';
 

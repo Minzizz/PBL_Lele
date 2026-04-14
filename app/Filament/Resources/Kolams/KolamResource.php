@@ -14,11 +14,14 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
+
 class KolamResource extends Resource
 {
     protected static ?string $model = Kolam::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string | \UnitEnum | null $navigationGroup = 'Menu Petugas';
+
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-map';
 
     protected static ?string $recordTitleAttribute = 'nama_kolam';
 
