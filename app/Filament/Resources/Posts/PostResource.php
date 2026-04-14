@@ -49,4 +49,13 @@ class PostResource extends Resource
             'edit' => EditPost::route('/{record}/edit'),
         ];
     }
+    public static function canViewAny(): bool
+        {
+            return auth()->user()?->hasAnyRole(['admin']);
+        }
+
+        public static function shouldRegisterNavigation(): bool
+        {
+            return auth()->user()?->hasAnyRole(['admin',]);
+    }
 }

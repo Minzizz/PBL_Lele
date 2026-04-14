@@ -59,4 +59,13 @@ class AkuntanResource extends Resource
             'edit' => EditAkuntan::route('/{record}/edit'),
         ];
     }
+    public static function canViewAny(): bool
+        {
+            return auth()->user()?->hasAnyRole(['admin', 'administrasi']);
+        }
+
+        public static function shouldRegisterNavigation(): bool
+        {
+            return auth()->user()?->hasAnyRole(['admin', 'administrasi']);
+    }
 }
