@@ -44,7 +44,8 @@ class MonitoringResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            //PostsRelationManager::class,
+            //return $this->hasMany(Monitoring::class, 'kolam_id');
         ];
     }
 

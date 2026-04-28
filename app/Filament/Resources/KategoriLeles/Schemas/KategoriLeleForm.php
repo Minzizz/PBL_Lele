@@ -18,7 +18,8 @@ class KategoriLeleForm
             ->components([
             TextInput::make('nama_kategori')
                 ->required()
-                ->label('Kategori Lele'),
+                ->label('Kategori Lele')
+                ->searchable(),
 
             TextInput::make('ukuran_minimum')
                 ->numeric()
@@ -33,12 +34,10 @@ class KategoriLeleForm
                 ->disk('public')
                 ->label('Gambar'),
             TextColumn::make('nama_kategori')
-                ->label('Nama kategori')
-                ->icon(Heroicon::OutlinedTag),
+                ->label('Nama kategori'),
 
             TextColumn::make('ukuran_minimum')
-                ->label('Standar panen')
-                ->icon(Heroicon::OutlinedScale),
+                ->label('Standar panen'),
 
             ImageColumn::make('gambar')
                 ->label('Gambar'),

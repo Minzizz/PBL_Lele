@@ -38,7 +38,8 @@ class KolamResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            //PostsRelationManager::class,
+            //return $this->hasMany(Monitoring::class, 'kolam_id');
         ];
     }
 
@@ -51,15 +52,13 @@ class KolamResource extends Resource
         ];
     }
 
-    // 🔐 BATASI AKSES (INI YANG KITA TAMBAH)
-
     public static function canViewAny(): bool
     {
-        return auth()->user()?->hasAnyRole(['admin', 'petugas lapangan']);
+        return auth()->user()?->hasAnyRole(['petugas lapangan']);
     }
 
     public static function shouldRegisterNavigation(): bool
     {
-        return auth()->user()?->hasAnyRole(['admin', 'petugas lapangan']);
+        return auth()->user()?->hasAnyRole(['petugas lapangan']);
     }
 }

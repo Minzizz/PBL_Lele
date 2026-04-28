@@ -48,7 +48,7 @@ class AkuntanResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            //PostsRelationManager::class, 
         ];
     }
 
@@ -63,11 +63,11 @@ class AkuntanResource extends Resource
     }
     public static function canViewAny(): bool
         {
-            return auth()->user()?->hasAnyRole(['admin', 'administrasi']);
+            return auth()->user()?->hasAnyRole(['akuntan']);
         }
 
         public static function shouldRegisterNavigation(): bool
         {
-            return auth()->user()?->hasAnyRole(['admin', 'administrasi']);
+            return auth()->user()?->hasAnyRole(['akuntan']);
     }
 }
