@@ -15,15 +15,11 @@ class Product extends Model
      * Sesuaikan dengan field di migrasi tadi.
      */
     protected $fillable = [
-        'name',
-        'sku',
-        'description',
-        'price',
-        'stock',
-        'image',
-        'is_active',
-        'is_featured'
-    ];
+    'nama',
+    'image',
+    'berat lele',
+    'harga'
+];
 
     /**
      * Casting tipe data (Opsional tapi disarankan)
@@ -32,7 +28,7 @@ class Product extends Model
     protected $casts = [
         'is_active' => 'boolean',
         'is_featured' => 'boolean',
-        'price' => 'integer',
-        'stock' => 'integer',
+        'harga' => 'integer',
+        'berat lele' => 'float',
     ];
 }
