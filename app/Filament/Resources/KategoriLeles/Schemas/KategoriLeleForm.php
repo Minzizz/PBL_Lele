@@ -9,6 +9,8 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Support\Icons\Heroicon;
+use Filament\Forms\Components\Select;
+
 
 class KategoriLeleForm
 {
@@ -18,8 +20,8 @@ class KategoriLeleForm
             ->components([
             TextInput::make('nama_kategori')
                 ->required()
-                ->label('Kategori Lele')
-                ->searchable(),
+                ->label('Kategori Lele'),
+                
 
             TextInput::make('ukuran_minimum')
                 ->numeric()

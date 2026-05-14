@@ -57,7 +57,7 @@
 
                     <div class="product-footer">
                         <span class="price">Rp 20.000 / kg</span>
-                        <a href="{{ route('order.create', $product->id) }}" class="btn btn-dark">Pesan</a>
+                        <a href="/checkout" class="btn btn-dark">Pesan</a>
                     </div>
                 </div>
             </article>
@@ -91,7 +91,7 @@
 
                     <div class="product-footer">
                         <span class="price">Rp 15.000 / kg</span>
-                        <a href="{{ route('order.create', $product->id) }}" class="btn btn-dark">Pesan</a>
+                        <a href="/checkout" class="btn btn-dark">Pesan</a>
                     </div>
                 </div>
             </article>
@@ -125,7 +125,7 @@
 
                     <div class="product-footer">
                         <span class="price">Rp 18.000 / kg</span>
-                        <a href="{{ route('order.create', $product->id) }}" class="btn btn-dark">Pesan</a>
+                        <a href="/checkout" class="btn btn-dark">Pesan</a>
                     </div>
                 </div>
             </article>

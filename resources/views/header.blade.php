@@ -1,29 +1,21 @@
-<header class="main-header">
+<header class="navbar">
 
-    <div class="header-overlay"></div>
+    <div class="logo-area">
+        <img src="{{ asset('storage/lele/logo fix.png') }}" class="logo">
 
-    <nav class="navbar">
-
-        <!-- Logo -->
-        <div class="logo-area">
-            <img src="{{ asset('storage/lele/logo fix.png') }}" class="logo-img">
-
-            <div class="logo-text">
-                Ternak Lele Saiful
-            </div>
+        <div class="logo-text">
+            Ternak Lele Saiful
         </div>
+    </div>
 
-        <!-- Menu -->
-        <div class="menu">
-            <a href="/">Beranda</a>
-            <a href="#">Tentang Kami</a>
-            <a href="#">Produk</a>
+    <nav class="menu">
+        <a href="{{ route('landing') }}">Beranda</a>
+        <a href="{{ route('product') }}">Product</a>    
+        <a href="{{ route('login') }}">tentang kami</a>
 
-            <a href="#" class="login-btn">
-                Login
-            </a>
-        </div>
-
+        <a href="{{ route('login') }}" class="login-btn">
+            Login
+        </a>
     </nav>
 
 </header>

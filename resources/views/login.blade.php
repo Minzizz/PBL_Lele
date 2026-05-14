@@ -26,7 +26,6 @@
     <div class="relative z-10 flex flex-col min-h-screen">
 
         <!-- HEADER -->
-        @include('header')
 
         <!-- LOGIN SECTION -->
         <main class="flex-grow flex items-center justify-center p-6 py-20">
@@ -113,7 +112,6 @@
         </main>
 
         <!-- FOOTER -->
-        @include('footer')
 
     </div>
 
