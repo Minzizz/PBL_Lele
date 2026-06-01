@@ -10,12 +10,14 @@ class PetugasController extends Controller
 {
     public function index()
     {
-        return view('petugas', [
-            'totalKolam' => Kolam::count(),
-            'totalMonitoring' => Monitoring::count(),
-            'totalKategori' => KategoriLele::count(),
+        $kolams = Kolam::all();
+        $monitorings = Monitoring::all();
+        $kategoriLeles = KategoriLele::all();
 
-            'kolams' => Kolam::latest()->get()
-        ]);
+        return view('petugas', compact(
+            'kolams',
+            'monitorings',
+            'kategoriLeles'
+        ));
     }
 }

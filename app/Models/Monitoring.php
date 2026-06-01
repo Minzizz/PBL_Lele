@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Monitoring extends Model
 {
-    protected $fillable = [
+        protected $fillable = [
         'tanggal',
         'suhu_air',
         'kondisi_air',

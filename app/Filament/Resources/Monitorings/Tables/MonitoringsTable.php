@@ -43,6 +43,13 @@ class MonitoringsTable
                     ->label('Mati (Ekor)')
                     ->sortable(),
 
+                // Kolom Laporan
+                TextColumn::make('laporan_deskriptif')
+                    ->label('Laporan')
+                    ->limit(50)
+                    ->wrap()
+                    ->searchable(),
+
                 // Kolom Timestamp (Tersembunyi secara default)
                 TextColumn::make('created_at')
                     ->dateTime()

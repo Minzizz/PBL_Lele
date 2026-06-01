@@ -3,90 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dashboard Petugas</title>
 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/petugas.css') }}">
 </head>
 <body>
 
-<div class="wrapper">
+<div class="container">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <!-- Sidebar -->
+   @include('sidebar')
 
-        <div class="logo">
-            <h2>Petugas</h2>
-        </div>
+    <!-- Content -->
+    <main class="content">
 
-        <ul class="menu">
-            <li class="active">
-                <i class="fas fa-water"></i>
-                <span>Kolam</span>
-            </li>
-            <li>
-                <i class="fas fa-fish"></i>
-                <span>Kategori Lele</span>
-            </li>
-            <li>
-                <i class="fas fa-chart-line"></i>
-                <span>Monitoring</span>
-            </li>
-        </ul>
-    </aside>
+        <h1>Dashboard Petugas</h1>
 
-    <!-- MAIN -->
-    <main class="main-content">
-
-        <div class="topbar">
-            <h1>Dashboard Petugas</h1>
-        </div>
-        <!-- CARD -->
         <div class="cards">
             <div class="card">
                 <h3>Total Kolam</h3>
-                <p>{{ $totalKolam }}</p>
+                <p>{{ $kolams->count() }}</p>
             </div>
+
             <div class="card">
                 <h3>Total Monitoring</h3>
-                <p>{{ $totalMonitoring }}</p>
+                <p>{{ $monitorings->count() }}</p>
             </div>
+
             <div class="card">
-                <h3>Kategori Lele</h3>
-                <p>{{ $totalKategori }}</p>
+                <h3>Jenis Lele</h3>
+                <p>{{ $kategoriLeles->count() }}</p>
             </div>
         </div>
-        <!-- TABLE -->
-        <div class="table-box">
+
+        <!-- Monitoring -->
+        <section id="monitoring">
+            <h2>Monitoring Kolam</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Suhu Air</th>
+                        <th>Kondisi Air</th>
+                        <th>Ikan Mati</th>
+                        <th>Laporan</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach($monitorings as $item)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->tanggal }}</td>
+                        <td>{{ $item->suhu_air }} °C</td>
+                        <td>{{ $item->kondisi_air }}</td>
+                        <td>{{ $item->ikan_mati }}</td>
+                        <td>{{ $item->laporan_deskriptif }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Kolam -->
+        <section id="kolam">
             <h2>Data Kolam</h2>
+
             <table>
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama Kolam</th>
-                        <th>Kategori</th>
-                        <th>Status</th>
+                        <th>Lokasi</th>
+                        <th>Kapasitas</th>
                     </tr>
                 </thead>
+
                 <tbody>
-                    @foreach ($kolams as $index => $kolam)
+                    @foreach($kolams as $kolam)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $kolam->nama_kolam }}</td>
-                        <td>{{ $kolam->kategori ?? '-' }}</td>
-                        <td>
-                            <span class="status aktif">
-                                {{ $kolam->status }}
-                            </span>
-                        </td>
+                        <td>{{ $kolam->lokasi }}</td>
+                        <td>{{ $kolam->kapasitas }}</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
+        </section>
+
+        <!-- Lele -->
+        <section id="lele">
+            <h2>Data Lele</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Jenis Lele</th>
+                        <th>Ukuran Minimum</th>
+                        <th>Deskripsi</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach($kategoriLeles as $lele)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $lele->nama_kategori }}</td>
+                        <td>{{ $lele->ukuran_minimum }}</td>
+                        <td>{{ $lele->deskripsi }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </section>
+
     </main>
+
 </div>
 
 </body>
