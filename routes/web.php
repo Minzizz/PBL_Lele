@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,9 @@ Route::get('/', function () {
     return view('landing');
 })->name('landing');
 
+Route::post('/login', [LoginController::class, 'login'])
+    ->name('login.process');
+
 Route::get('/masuk', function () {
     return view('login');
 })->name('login');
@@ -25,9 +29,6 @@ Route::get('/register', function () {
 
 Route::get('/product', [ProductController::class, 'index'])
     ->name('product');
-
-Route::get('/checkout/{id}', [ProductController::class, 'checkout'])
-    ->name('checkout');
 
 Route::get('/order/{id}', [OrderController::class, 'create'])
     ->name('order.create');

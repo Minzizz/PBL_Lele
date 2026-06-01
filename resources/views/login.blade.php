@@ -44,7 +44,7 @@
                     Login
                 </h2>
 
-                <form action="{{ route('login') }}" method="POST">
+                <form action="{{ route('login.process') }}" method="POST">
                     @csrf
 
                     <!-- EMAIL -->

@@ -12,7 +12,7 @@ class OrderController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return view('order.create', compact('product'));
+        return view('order', compact('product'));
     }
 
     public function store(Request $request)
