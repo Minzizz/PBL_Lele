@@ -8,6 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\KolamController;
 use App\Http\Controllers\LeleController;
+use App\Http\Controllers\KategoriLeleController;
+
 
 
 /*
@@ -64,3 +66,6 @@ Route::get('/kolam', [KolamController::class, 'index'])
 
 Route::get('/lele', [LeleController::class, 'index'])
     ->name('lele.index');
+
+Route::resource('kolam', KolamController::class);
+Route::resource('lele', KategoriLeleController::class);

@@ -10,8 +10,9 @@
 <body>
 <div class="container">
 
-       @include('sidebar')
+    @include('sidebar')
 
+    <main class="content">
         <div class="table-card">
         <div class="table-header">
             <h2>Data Monitoring</h2>
@@ -145,22 +146,16 @@
                             <button type="submit" class="btn-edit">
                                 Update Data
                             </button>
-
                         </form>
-
                     </div>
-
                 </div>
-
             @endforeach
-
             </tbody>
-
         </table>
-
+        </div>
     </div>
-
-</div>
+    </div>
+</main>
 
 {{-- MODAL TAMBAH --}}
 <div id="modalTambah" class="modal">
