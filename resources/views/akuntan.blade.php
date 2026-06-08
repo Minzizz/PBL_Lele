@@ -9,165 +9,122 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/akuntan.css') }}">
 </head>
 
-<body class="product-page">
+<body class="product-page akuntan-page">
 
-    {{-- Navigasi (Opsional jika ingin disertakan) --}}
-    @include('header')
+<div class="container">
+
+    @include('sidebar_akuntan')
 
     <main class="catalog-container">
 
+    {{-- ================= PENGELUARAN ================= --}}
+    <header class="catalog-header">
+        <h1 class="header-title">Data Pengeluaran</h1>
 
-        <header class="catalog-header">
-            <div class="header-badge">
-                <i class="fas fa-shopping-basket"></i>
-                <span>100% Produk Fresh & Organik</span>
-            </div>
-            <p class="header-subtitle">Sustainable • High Quality • Freshly Harvested</p>
-            <h1 class="header-title">Pengeluaran</h1>
-        </header>
-        <div class="filter-wrapper">
-            <div class="filter-box">
-                <label for="year-select" class="filter-label">Pilih Tahun:</label>
-                <select name="year" id="year-select" class="year-select">
-                    <option value="2026">2026</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                </select>
-            </div>
-        </div>
+        <p class="header-subtitle">
+            Monitoring biaya operasional ternak lele
+        </p>
+    </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        </div>
-        </div>
-        <div class="product-grid">
+    <div class="table-wrapper">
 
-            <article class="product-card">
-                <div class="product-content">
-                    <h2 class="product-name">Kuartal 1</h2>
+        <table class="data-table">
 
-                    <div class="product-details">
-                        <div class="detail-item">
-                            <span class="label">Biaya Pakan:</span>
-                            <span class="value">Rp 500.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya Listrik:</span>
-                            <span class="value">Rp 125.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya vitamin:</span>
-                            <span class="value">Rp 75.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya air:</span>
-                            <span class="value">Rp 120.000</span>
-                        </div>
-                    </div>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kuartal</th>
+                    <th>Tahun</th>
+                    <th>Biaya Pakan</th>
+                    <th>Biaya Listrik</th>
+                    <th>Biaya Air</th>
+                    <th>Biaya Vitamin</th>
+                    <th>Total Biaya</th>
+                </tr>
+            </thead>
 
-                    <div class="product-footer">
-                        <span class="price">Total: Rp 820.000</span>
-                        <a href="/checkout" class="btn btn-dark">Edit</a>
-                    </div>
-                </div>
-            </article>
+            <tbody>
+                @forelse($pengeluarans as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>Kuartal {{ $item->kuartal }}</td>
+                    <td>{{ $item->tahun }}</td>
+                    <td>Rp {{ number_format($item->biaya_pakan,0,',','.') }}</td>
+                    <td>Rp {{ number_format($item->biaya_listrik,0,',','.') }}</td>
+                    <td>Rp {{ number_format($item->biaya_air,0,',','.') }}</td>
+                    <td>Rp {{ number_format($item->biaya_vitamin,0,',','.') }}</td>
+                    <td>Rp {{ number_format($item->total_biaya,0,',','.') }}</td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="8" class="text-center">
+                        Belum ada data pengeluaran
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
 
-            <article class="product-card">
-                <div class="product-content">
-                    <h2 class="product-name">Kuartal 2</h2>
+        </table>
 
-                    <div class="product-details">
-                        <div class="detail-item">
-                            <span class="label">Biaya Pakan:</span>
-                            <span class="value">Rp 500.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya Listrik:</span>
-                            <span class="value">Rp 125.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya vitamin:</span>
-                            <span class="value">Rp 75.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya air:</span>
-                            <span class="value">Rp 120.000</span>
-                        </div>
-                    </div>
+    </div>
 
-                    <div class="product-footer">
-                        <span class="price">Total: Rp 820.000</span>
-                        <a href="/checkout" class="btn btn-dark">Edit</a>
-                    </div>
-                </div>
-            </article>
+    {{-- JARAK --}}
+    <div style="height:50px;"></div>
 
-            <article class="product-card">
-                <div class="product-content">
-                    <h2 class="product-name">Kuartal 3</h2>
+    {{-- ================= PENJUALAN ================= --}}
+    <header class="catalog-header">
+        <h1 class="header-title">Data Penjualan</h1>
 
-                    <div class="product-details">
-                        <div class="detail-item">
-                            <span class="label">Biaya Pakan:</span>
-                            <span class="value">Rp 500.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya Listrik:</span>
-                            <span class="value">Rp 125.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya vitamin:</span>
-                            <span class="value">Rp 75.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya air:</span>
-                            <span class="value">Rp 120.000</span>
-                        </div>
-                    </div>
+        <p class="header-subtitle">
+            Monitoring hasil penjualan lele
+        </p>
+    </header>
 
-                    <div class="product-footer">
-                        <span class="price">Total: Rp 820.000</span>
-                        <a href="/checkout" class="btn btn-dark">Edit</a>
-                    </div>
-                </div>
-            </article>
+    <div class="table-wrapper">
 
-            <article class="product-card">
-                <div class="product-content">
-                    <h2 class="product-name">Kuartal 4</h2>
+        <table class="data-table">
 
-                    <div class="product-details">
-                        <div class="detail-item">
-                            <span class="label">Biaya Pakan:</span>
-                            <span class="value">Rp 500.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya Listrik:</span>
-                            <span class="value">Rp 125.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya vitamin:</span>
-                            <span class="value">Rp 75.000</span>
-                        </div>
-                        <div class="detail-item border-top">
-                            <span class="label">Biaya air:</span>
-                            <span class="value">Rp 120.000</span>
-                        </div>
-                    </div>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Tanggal</th>
+                    <th>Jumlah Kg</th>
+                    <th>Harga / Kg</th>
+                    <th>Total Pendapatan</th>
+                    <th>Biaya Operasional</th>
+                    <th>Keuntungan</th>
+                </tr>
+            </thead>
 
-                    <div class="product-footer">
-                        <span class="price">Total: Rp 820.000</span>
-                        <a href="/checkout" class="btn btn-dark">Edit</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </main>
+            <tbody>
+                @forelse($penjualans as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->tanggal }}</td>
+                    <td>{{ $item->jumlah_kg }}</td>
+                    <td>Rp {{ number_format($item->harga_per_kg,0,',','.') }}</td>
+                    <td>Rp {{ number_format($item->total_pendapatan,0,',','.') }}</td>
+                    <td>Rp {{ number_format($item->biaya_operasional,0,',','.') }}</td>
+                    <td>Rp {{ number_format($item->keuntungan,0,',','.') }}</td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="7" class="text-center">
+                        Belum ada data penjualan
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
 
-    {{-- Footer (Opsional) --}}
-    @include('footer')
+        </table>
+
+    </div>
+
+</main>
+</div>
 
 </body>
 

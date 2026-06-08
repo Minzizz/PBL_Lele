@@ -39,7 +39,7 @@
             Silakan isi data untuk membuat akun baru
         </p>
 
-        <form action="{{ route('register') }}" method="POST">
+        <form action="{{ route('register.process') }}" method="POST">
             @csrf
 
             <!-- NAME -->
