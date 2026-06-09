@@ -16,6 +16,8 @@ use App\Http\Controllers\AkuntanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\AdminPartnerController;
 
 
 
@@ -104,11 +106,16 @@ Route::resource('pesanan', PesananController::class);
 Route::get('/penjualan', [PenjualanController::class, 'index'])
     ->name('penjualan.index');
 Route::post('/penjualan/store', [PenjualanController::class, 'store'])
-    ->name('penjualan.store');    
+    ->name('penjualan.store');
+Route::get('/penjualan/edit/{id}', [PenjualanController::class, 'edit'])
+    ->name('penjualan.edit');
+Route::put('/penjualan/{id}', [PenjualanController::class, 'update'])
+    ->name('penjualan.update');
+Route::delete('/penjualan/{id}', [PenjualanController::class, 'destroy'])
+    ->name('penjualan.destroy');
+
 
 //admin//
-
-
 Route::get('/admin', [AdminController::class, 'index'])
     ->name('admin');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
@@ -116,3 +123,18 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
+//partner//
+Route::get('/partner', [PartnerController::class, 'index'])
+    ->name('partner.index');
+Route::get('/partner', [PartnerController::class, 'index'])->name('partner.public');
+//admin partner//
+Route::get('/admin/partner', [AdminPartnerController::class, 'index'])->name('partner.admin');
+
+Route::get('/admin/partner', [AdminPartnerController::class, 'index'])
+    ->name('admin.partner.index');
+Route::post('/admin/partner', [AdminPartnerController::class, 'store'])
+    ->name('admin.partner.store');
+Route::put('/admin/partner/{id}', [AdminPartnerController::class, 'update'])
+    ->name('admin.partner.update');
+Route::delete('/admin/partner/{id}', [AdminPartnerController::class, 'destroy'])
+    ->name('admin.partner.destroy');

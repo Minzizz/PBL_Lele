@@ -13,6 +13,6 @@ class Pengeluaran extends Model
         'biaya_listrik',
         'biaya_air',
         'biaya_vitamin',
-        'total_biaya',
+        'total_biaya'
     ];
 }

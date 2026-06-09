@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Akuntan extends Model
 {
-    //
+    protected $fillable = [
+        'kuartal',
+        'tahun',
+        'biaya_pakan',
+        'biaya_listrik',
+        'biaya_air',
+        'biaya_vitamin',
+        'total_biaya',
+    ];
 }

@@ -37,7 +37,9 @@
     <section class="features">
 
         <div class="feature">
-            <i class="fas fa-bars icon"></i>
+            <a href="{{ route('product') }}">
+                <i class="fas fa-fish icon"></i>
+            </a>
 
             <h3>PRODUCT</h3>
 
@@ -48,7 +50,7 @@
         </div>
 
         <div class="feature">
-            <i class="fas fa-desktop icon"></i>
+            <i class="fas fa-circle-info icon" onclick="openAbout()"></i>
 
             <h3>TENTANG PETERNAKAN</h3>
 
@@ -59,7 +61,9 @@
         </div>
 
         <div class="feature">
-            <i class="fas fa-users icon"></i>
+            <a href="{{ url('/partner') }}">
+                <i class="fas fa-handshake icon"></i>
+            </a>
 
             <h3>PARTNER KAMI</h3>
 
@@ -104,5 +108,44 @@
     {{-- FOOTER --}}
     @include('footer')
 
+    {{-- POP UP --}}
+    <div id="aboutModal" class="modal">
+
+    <div class="modal-box">
+        <div class="modal-header">
+            <h2>Tentang Ternak Lele Saiful</h2>
+            <span class="close" onclick="closeAbout()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p>
+                Ternak Lele Saiful adalah usaha budidaya ikan lele
+                yang berfokus pada kualitas, kebersihan, dan hasil panen terbaik.
+            </p>
+            <p>
+                Sistem kami sudah menggunakan metode modern agar hasil lebih stabil,
+                efisien, dan mudah dipantau oleh petugas lapangan.
+            </p>
+            <ul>
+                <li>✔ Kualitas air terkontrol</li>
+                <li>✔ Monitoring harian</li>
+                <li>✔ Sistem panen terjadwal</li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button onclick="closeAbout()">Tutup</button>
+        </div>
+
+    </div>
+
+</div>
+   <script>
+        function openAbout() {
+            document.getElementById('aboutModal').style.display = 'flex';
+        }
+
+        function closeAbout() {
+            document.getElementById('aboutModal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
