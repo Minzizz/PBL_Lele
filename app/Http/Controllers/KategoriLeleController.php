@@ -17,17 +17,20 @@ class KategoriLeleController extends Controller
 
     public function store(Request $request)
     {
-        $gambar = null;
+        $request->validate([
+            'nama_kategori' => 'required',
+            'ukuran_minimum' => 'required|numeric',
+            'deskripsi' => 'nullable',
+            'gambar' => 'required|image'
+        ]);
 
-        if($request->hasFile('gambar')){
-            $gambar = $request->file('gambar')->store('lele','public');
-        }
+        $gambarPath = $request->file('gambar')->store('lele', 'public');
 
         KategoriLele::create([
             'nama_kategori' => $request->nama_kategori,
             'ukuran_minimum' => $request->ukuran_minimum,
             'deskripsi' => $request->deskripsi,
-            'gambar' => $gambar
+            'gambar' => $gambarPath
         ]);
 
         return redirect()->route('lele.index');
@@ -37,20 +40,27 @@ class KategoriLeleController extends Controller
     {
         $lele = KategoriLele::findOrFail($id);
 
+        $request->validate([
+            'nama_kategori' => 'required',
+            'ukuran_minimum' => 'required|numeric',
+            'deskripsi' => 'nullable',
+            'gambar' => 'nullable|image'
+        ]);
+
         $data = [
             'nama_kategori' => $request->nama_kategori,
             'ukuran_minimum' => $request->ukuran_minimum,
             'deskripsi' => $request->deskripsi,
         ];
 
-        if($request->hasFile('gambar'))
-        {
-            if($lele->gambar){
+        // kalau upload gambar baru
+        if ($request->hasFile('gambar')) {
+
+            if ($lele->gambar) {
                 Storage::disk('public')->delete($lele->gambar);
             }
 
-            $data['gambar'] =
-                $request->file('gambar')->store('lele','public');
+            $data['gambar'] = $request->file('gambar')->store('lele', 'public');
         }
 
         $lele->update($data);
@@ -62,7 +72,7 @@ class KategoriLeleController extends Controller
     {
         $lele = KategoriLele::findOrFail($id);
 
-        if($lele->gambar){
+        if ($lele->gambar) {
             Storage::disk('public')->delete($lele->gambar);
         }
 

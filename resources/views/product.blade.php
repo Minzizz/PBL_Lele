@@ -55,10 +55,6 @@
                         <span class="badge badge-blue">HIGIENIS</span>
                     </div>
 
-                    <div class="product-footer">
-                        <span class="price">Rp 20.000 / kg</span>
-                        <a href="/order/1" class="btn btn-dark">Pesan</a>
-                    </div>
                 </div>
             </article>
 
@@ -89,10 +85,6 @@
                         <span class="badge badge-blue">SEGAR</span>
                     </div>
 
-                    <div class="product-footer">
-                        <span class="price">Rp 15.000 / kg</span>
-                        <a href="/order/2" class="btn btn-dark">Pesan</a>
-                    </div>
                 </div>
             </article>
 
@@ -121,11 +113,6 @@
                     <div class="badge-group">
                         <span class="badge badge-green">100% ORGANIK</span>
                         <span class="badge badge-blue">PREMIUM</span>
-                    </div>
-
-                    <div class="product-footer">
-                        <span class="price">Rp 18.000 / kg</span>
-                        <a href="/order/3" class="btn btn-dark">Pesan</a>
                     </div>
                 </div>
             </article>

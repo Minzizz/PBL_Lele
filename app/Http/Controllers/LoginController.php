@@ -7,30 +7,38 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
-    {
-        if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ]))
-        {
-            $user = Auth::user();
 
-            if ($user->id == 3) {
-                return redirect('/admin');
-            }
+public function login(Request $request)
+{
+    $credentials = $request->only('email', 'password');
 
-            if ($user->id == 4) {
-                return redirect('/petugas');
-            }
+    if (Auth::attempt($credentials)) {
 
-            if ($user->id == 5) {
-                return redirect('/akuntan');
-            }
+        $request->session()->regenerate();
 
+        $user = Auth::user();
+
+        if ($user->role == 'admin') {
+            return redirect('/admin');
+        }
+
+        if ($user->role == 'petugas') {
+            return redirect('/petugas');
+        }
+
+        if ($user->role == 'akuntan') {
+            return redirect('/akuntan');
+        }
+        if ($user->role == 'user') {
             return redirect('/');
         }
 
-        return back()->with('error', 'Email atau Password salah');
+        // fallback
+        return redirect('/home');
     }
+
+    return back()->withErrors([
+        'email' => 'Login gagal',
+    ]);
+}
 }
